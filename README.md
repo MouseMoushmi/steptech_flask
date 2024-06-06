@@ -52,13 +52,15 @@ The database schema for the User Management System is simple and consists of a s
 ## UI
 
 ## USER_LIST
-<img width="1252" alt="image" src="https://github.com/MouseMoushmi/steptech_task/assets/91429348/dc0e02eb-26f5-4649-8778-8b6e6a9d5535">
+<img width="1178" alt="image" src="https://github.com/MouseMoushmi/steptech_flask/assets/91429348/9d1b5417-e2f1-47ae-bb70-e700a7049c11">
+
 
 ## USER_FORM_ENTRY
-<img width="1252" alt="image" src="https://github.com/MouseMoushmi/steptech_task/assets/91429348/479b6eb8-33fa-48d6-88a7-d9736b01b851">
+<img width="875" alt="image" src="https://github.com/MouseMoushmi/steptech_flask/assets/91429348/4dd76139-701e-429c-9d02-875acbd27aa7">
+
 
 ## USER_DETAILS
-<img width="1280" alt="image" src="https://github.com/MouseMoushmi/steptech_task/assets/91429348/af2df3aa-080b-492b-a031-546c77988d4a">
+<img width="665" alt="image" src="https://github.com/MouseMoushmi/steptech_flask/assets/91429348/20c95cc2-87c9-4e32-97b3-5fda8c20b436">
 
 
 
