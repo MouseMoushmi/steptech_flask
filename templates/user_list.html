@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User List</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <style>
+        body, html {
+            margin: 0;
+            padding: 0;
+            height: 100%;
+            width: 92%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: #f5f7fa;
+            font-family: 'Roboto', sans-serif;
+        }
+        .container {
+            width: 80%;
+            max-width: 1200px;
+            height: 80%;
+            display: flex;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+            overflow: hidden;
+            background: #fff;
+        }
+        .left-image {
+            flex: 0 0 40%;
+            background-size: cover;
+            background-position: center;
+        }
+        .right-content {
+            flex: 1;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+        }
+        .header {
+            font-size: 28px;
+            font-weight: bold;
+            margin-bottom: 20px;
+            color: #333;
+            text-align: center;
+        }
+        .user-list-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+        .title {
+            font-size: 18px;
+            font-weight: bold;
+            color: #333;
+        }
+        .search-container {
+            display: flex;
+            align-items: center;
+        }
+        .search-container input {
+            flex: 1;
+            padding: 10px;
+            border-radius: 20px;
+            border: 1px solid #ddd;
+            outline: none;
+        }
+        .search-container i {
+            margin-left: -30px;
+            color: #ddd;
+        }
+        .user-list {
+            flex: 1;
+            overflow-y: auto;
+        }
+        .user-table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        .user-table th, .user-table td {
+            padding: 15px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+        .user-table th {
+            background: #f9f9f9;
+            font-weight: bold;
+        }
+        .user-avatar img {
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            margin-right: 10px;
+        }
+        .user-avatar {
+            display: flex;
+            align-items: center;
+        }
+        button.btn {
+            background-color: #4CAF50;
+            margin-top: 20px;
+        }
+        button.btn:hover {
+            background-color: #45a049;
+        }
+        tr.clickable-row {
+            cursor: pointer;
+        }
+        @media screen and (max-width: 768px) {
+            .container {
+                flex-direction: column;
+                height: auto;
+            }
+            .left-image {
+                flex: 0 0 100%;
+                height: 200px;
+            }
+            .right-content {
+                flex: 0 0 100%;
+                padding: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="left-image" style="background-image: url('https://miro.medium.com/v2/resize:fit:1400/format:webp/1*2lDWW5XfA3d95WUJkSXE6g.jpeg');"></div>
+        <div class="right-content">
+            <div class="header">User Management Dashboard</div>
+            <div class="user-list-header">
+                <div class="title">Total Users ({{ users | length }})</div>
+                <div class="search-container">
+                    <input type="text" placeholder="search...">
+                    <i class="material-icons">search</i>
+                </div>
+            </div>
+            <div class="user-list">
+                <table class="user-table">
+                    <thead>
+                        <tr>
+                            <th>Image</th>
+                            <th>ID</th>
+                            <th>Name</th>
+                            <th>Email</th>
+                            <th>Role</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for user in users %}
+                        <tr class="clickable-row" data-href="{{ url_for('get_user', id=user[0]) }}">
+                            <td class="user-avatar">
+                                <img src="https://img.freepik.com/premium-photo/cute-girl-3d-character-design-cartoon-girl-avatar_432516-5511.jpg?w=1060" alt="User Avatar">
+                            </td>
+                            <td>{{ user[0] }}</td>
+                            <td>{{ user[1] }}</td>
+                            <td>{{ user[2] }}</td>
+                            <td>{{ user[3] }}</td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+            <button class="btn waves-effect waves-light" type="button" onclick="location.href='{{ url_for('new_user') }}'">Add User
+                <i class="material-icons right">add</i>
+            </button>
+        </div>
+    </div>
+    <!-- Import Materialize JavaScript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const rows = document.querySelectorAll('.clickable-row');
+            rows.forEach(row => {
+                row.addEventListener('click', () => {
+                    window.location.href = row.dataset.href;
+                });
+            });
+        });
+    </script>
+</body>
+</html>

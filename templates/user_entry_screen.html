@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Entry Form</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <style>
+        body, html {
+            margin: 0;
+            padding: 0;
+            height: 100%;
+            width:  92%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: #f5f7fa;
+            font-family: 'Roboto', sans-serif;
+        }
+        .input-field input[type=text],
+        .input-field input[type=email] {
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            padding: 10px;
+            box-sizing: border-box;
+        }
+        .input-field input[type=text]:focus,
+        .input-field input[type=email]:focus {
+            border-bottom: 2px solid #FF9800 !important;
+            box-shadow: 0 1px 0 0 #FF9800 !important;
+        }
+        .input-field {
+            margin-top: 0.5rem;
+            position: relative;
+        }
+        .container {
+            display: flex;
+            flex-wrap: nowrap;
+            width: 80%;
+            max-width: 1200px;
+            height: 80%;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+            overflow: hidden;
+            background: #fff;
+        }
+        .left-image {
+            flex: 0 0 50%;
+            background-size: cover;
+            background-position: center;
+            border-right: 1px solid #ccc;
+        }
+        .left-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover; /* Ensure image covers the container */
+        }
+        .form-container {
+            flex: 0 0 50%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+        .form-container form {
+            width: 100%;
+        }
+         .header {
+            font-size: 28px;
+            font-weight: bold;
+            margin-bottom: 20px;
+            color: #333;
+            text-align: center;
+        }
+        .button-container {
+            display: flex;
+            justify-content: space-between;
+        }
+        button.btn {
+            background-color: #4CAF50;
+            margin-top: 20px;
+            width: 48%; /* Ensure the buttons take equal space */
+        }
+        button.btn:hover {
+            background-color: #45a049;
+        }
+        button.btn-back {
+            background-color: #f44336;
+        }
+        button.btn-back:hover {
+            background-color: #e53935;
+        }
+
+        /* Media query for smaller screens */
+        @media screen and (max-width: 768px) {
+            .container {
+                flex-direction: column;
+                height: auto;
+            }
+            .left-image {
+                flex: 0 0 100%;
+                height: 200px;
+                border-right: none;
+                border-bottom: 1px solid #ccc;
+            }
+            .form-container {
+                flex: 0 0 100%;
+                padding: 20px;
+            }
+            .button-container {
+                flex-direction: column;
+            }
+            button.btn {
+                width: 100%;
+                margin-bottom: 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="left-image">
+            <img src="https://miro.medium.com/v2/resize:fit:1400/format:webp/1*2lDWW5XfA3d95WUJkSXE6g.jpeg" alt="Description of image">
+        </div>
+        <div class="form-container">
+             <div class="header">User Entry Form</div>
+            <form action="/new_user" method="post">
+                <div class="row">
+                    <div class="input-field col s12">
+                        <input type="text" id="id" name="id" required placeholder="ID">
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="input-field col s12">
+                        <input type="text" id="name" name="name" required placeholder="Name">
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="input-field col s12">
+                        <input type="email" id="email" name="email" required placeholder="Email">
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="input-field col s12">
+                        <input type="text" id="role" name="role" required placeholder="Role">
+                    </div>
+                </div>
+                <div class="row button-container">
+                    <button class="btn waves-effect waves-light" type="submit" name="action">Submit
+                        <i class="material-icons right">send</i>
+                    </button>
+                    <button class="btn waves-effect waves-light btn-back" type="button" onclick="window.location.href='/user_list'">Back
+                        <i class="material-icons right">arrow_back</i>
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+    <!-- Import Materialize JavaScript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            M.updateTextFields();
+        });
+    </script>
+</body>
+</html>
